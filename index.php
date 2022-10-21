@@ -32,9 +32,9 @@ include ("head.php");
 
 <!--menu bare star-->
 <div class="contener-fluid" style="background-color:antiquewhite">
-    <div class="row">
+    <!-- <div class="row">
         <img src="b.jpg" alt="no">
-    </div>
+    </div> -->
     <div class="row" style="padding: 5px; background-color: aquamarine;">
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
@@ -42,9 +42,9 @@ include ("head.php");
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Features</a>
                         </li>
                         <li class="nav-item">
@@ -60,13 +60,13 @@ include ("head.php");
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
             <div>
                 <h6>
-                    <center>Diveloped by Miskir Nega (HIT)</center>
+                    <center>Diveloped by: Miskir Nega (HIT)</center>
                 </h6>
             </div>
         </nav>
@@ -148,7 +148,13 @@ include ("head.php");
                 <div class="mb-2 row">
                     <label class="col-sm-4">Gender:<span style="color:red; font-weight: bold;">*</span></label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-sm" name="gender" required/>
+                    <select class="form-select" id="states" name="states"
+                                    aria-label="Default select example" required/>
+                                    <option selected disabled>select</option>
+                                    <option value="active">MALE</option>
+                                    <option value="inactive">FEMALE</option>
+                                </select>
+                        <!-- <input type="text" class="form-control input-sm" name="gender" required/> -->
                     </div>
                 </div>
                 <div class="mb-2 row">
@@ -192,13 +198,31 @@ include ("head.php");
                 <div class="mb-2 mt-2 row">
                     <label class="col-sm-4">Marital Status:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="marital_status">
+                    <select class="form-select" id="states" name="states"
+                                    aria-label="Default select example" required/>
+                                    <option selected disabled>select</option>
+                                    <option value="active">SINGLE</option>
+                                    <option value="inactive">MARRIED</option>
+                                    <option value="inactive">WIDOWED</option>
+                                    <option value="inactive">DIVORCED</option>
+                                </select>
+                        <!-- <input type="text" class="form-control" name="marital_status"> -->
                     </div>
                 </div>
                 <div class="mb-2 row">
                     <label class="col-sm-4">Religion:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="religion">
+                    <select class="form-select" id="states" name="states"
+                                    aria-label="Default select example" required/>
+                                    <option selected disabled>select</option>
+                                    <option value="active">Christians</option>
+                                    <option value="inactive">Ethiopian Orthodox</option>
+                                    <option value="inactive">Protestants</option>
+                                    <option value="inactive">Catholics</option>
+                                    <option value="inactive">Muslims</option>
+                                    <option value="inactive">Catholics</option>
+                                </select>
+                        <!-- <input type="text" class="form-control" name="religion"> -->
                     </div>
                 </div>
                 <div class="mb-2 row">
@@ -227,7 +251,7 @@ include ("head.php");
                 <div class="mb-2 mt-2 row">
                     <label class="col-sm-4">Subcity:<span style="color:red; font-weight: bold;">*</span></label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="region">
+                        <input type="text" class="form-control" name="subcity">
                         <!--<span class="input-group-text" id="basic-addon2">=</span>-->
                     </div>
                 </div>
@@ -290,6 +314,7 @@ include ("head.php");
                             <th>Occupation</th>
                             <th>Place of Birth</th>
                             <th>Region</th>
+                            <th>Subcity</th>
                             <th>Woreda</th>
                             <th>House Number</th>
                             <th>Mobile Phone</th>
@@ -322,6 +347,7 @@ include ("head.php");
                                             <td>".$row['occupation']."</td>
                                             <td>".$row['place_of_birth']."</td>
                                             <td>".$row['region']."</td>
+                                            <td>".$row['subcity']."</td>
                                             <td>".$row['woreda']."</td>
                                             <td>".$row['house_number']."</td>
                                             <td>".$row['mobile_phone']."</td>

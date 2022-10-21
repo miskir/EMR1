@@ -16,11 +16,12 @@
 		$occupation = $_POST['occupation'];
 		$place_of_birth = $_POST['place_of_birth'];
 		$region = $_POST['region'];
+		$subcity = $_POST['subcity'];
 		$woreda = $_POST['woreda'];
 		$house_number = $_POST['house_number'];
 		$mobile_phone = $_POST['mobile_phone'];
-		$sql = "INSERT INTO patient_list (patientid, firstname, fathersname, grandfathersname, gender, mothersname, registration_date, age, marital_status, religion, occupation, place_of_birth, region, woreda, house_number, mobile_phone) 
-		VALUES ('$patientid', '$firstname', '$fathersname','$grandfathersname','$gender','$mothersname','$registration_date','$age','$marital_status','$religion','$occupation','$place_of_birth','$region','$woreda','$house_number','$mobile_phone')";
+		$sql = "INSERT INTO patient_list (patientid, firstname, fathersname, grandfathersname, gender, mothersname, registration_date, age, marital_status, religion, occupation, place_of_birth, region, subcity, woreda, house_number, mobile_phone) 
+		VALUES ('$patientid', '$firstname', '$fathersname','$grandfathersname','$gender','$mothersname','$registration_date','$age','$marital_status','$religion','$occupation','$place_of_birth','$region','$subcity', '$woreda','$house_number','$mobile_phone')";
 		// $query = INSERT INTO `patient`(`patientid`, `firstname`, `fathersname`, `grandfathersname`, `gender`, `mothersname`, `registration_date`, `age`, `marital_status`, `religion`, `occupation`, `place_of_birth`, `region`, `woreda`, `house_number`, `mobile_phone`) 
 		// VALUES ('$patientid','$firstname','$fathersname','$grandfathersname','$gender','$mothersname','$registration_date','$age','$marital_status','$religion','$occupation','$place_of_birth','$woreda','$house_number','$mobile_phone',[value-16],[value-17])
 		//use for MySQLi OOP
