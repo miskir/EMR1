@@ -1,0 +1,5 @@
+SET @num := 0;
+
+UPDATE computers SET id = @num := (@num+1);
+
+ALTER TABLE computers AUTO_INCREMENT =1;
