@@ -3,6 +3,15 @@
     include ("head.php");
     // include ("men.php");
     ?>
+    <?php
+include 'connection.inc.php';
+
+$country = "SELECT * FROM region";
+$county_qry = mysqli_query($conn, $country);
+
+
+
+?>
 
     <head>
         <meta charset="utf-8">
@@ -50,10 +59,10 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                             </li>
-                             <li class="nav-item">
-                            <a class="nav-link" href="backup.php">Backup</a>
-                        </li>
-                       <!-- <li class="nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link" href="backup.php">Backup</a>
+                            </li>
+                            <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Pricing</a>
                         </li>
                         <li class="nav-item dropdown">
@@ -69,8 +78,8 @@
                         </li> -->
                         </ul>
                     </div>
-                    <div class="max-auto">
-                        <h2>EMRS</h2>
+                    <div class="max-auto col-sm-7">
+                        <h2>Electronic Medical Recording System</h2>
                     </div>
                 </div>
 
@@ -133,21 +142,23 @@
                     <div class="mb-2 row input">
                         <label class="col-sm-4">FirstName:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" id="search" name="firstname" required />
+                            <input style="text-transform: Uppercase" type="text" class="form-control input-sm"
+                                id="search" name="firstname" required />
                         </div>
                     </div>
                     <div class="mb-2 mt-2 row">
                         <label class="col-sm-4">FathersName:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" id="search1" name="fathersname" required />
+                            <input style="text-transform: Uppercase" type="text" class="form-control input-sm"
+                                id="search1" name="fathersname" required />
                         </div>
                     </div>
                     <div class="mb-2 row">
                         <label class="col-sm-4 align-ridht">GrandfathersNamr:<span
                                 style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" id="search2" name="grandfathersname"
-                                required />
+                            <input style="text-transform: Uppercase" type="text" class="form-control input-sm"
+                                id="search2" name="grandfathersname" required />
                         </div>
                     </div>
                     <!-- <div class="mb-2 mt-2 row">
@@ -160,8 +171,8 @@
                     <div class="mb-2 row">
                         <label class="col-sm-4">Gender:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
-                            <select class="form-select" id="states" name="gender" aria-label="Default select example"
-                                required>
+                            <select style="text-transform: Uppercase" class="form-select" id="states" name="gender"
+                                aria-label="Default select example" required>
                                 <option selected disabled>select</option>
                                 <option value="MALE">MALE</option>
                                 <option value="FEMALE">FEMALE</option>
@@ -172,7 +183,8 @@
                     <div class="mb-2 row">
                         <label class="col-sm-4">MothersName:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" name="mothersname" required />
+                            <input style="text-transform: Uppercase" type="text" class="form-control input-sm"
+                                id="search3" name="mothersname" required />
                         </div>
                     </div>
                 </div>
@@ -210,8 +222,8 @@
                     <div class="mb-2 mt-2 row">
                         <label class="col-sm-4">Marital Status:</label>
                         <div class="col-sm-8">
-                            <select class="form-select" id="states" name="marital_status"
-                                aria-label="Default select example" required>
+                            <select style="text-transform: Uppercase" class="form-select" id="states"
+                                name="marital_status" aria-label="Default select example" required>
                                 <option selected disabled>select</option>
                                 <option value="SINGLE">SINGLE</option>
                                 <option value="MARRIED">MARRIED</option>
@@ -224,15 +236,14 @@
                     <div class="mb-2 row">
                         <label class="col-sm-4">Religion:</label>
                         <div class="col-sm-8">
-                            <select class="form-select" id="states" name="religion" aria-label="Default select example"
-                                required>
+                            <select style="text-transform: Uppercase" class="form-select" id="states" name="religion"
+                                aria-label="Default select example" required>
                                 <option selected disabled>select</option>
-                                <option value="Christians">Christians</option>
-                                <option value="Ethiopian_Orthodox">Ethiopian_Orthodox</option>
-                                <option value="Protestants">Protestants</option>
-                                <option value="Catholics">Catholics</option>
-                                <option value="Muslims">Muslims</option>
-                                <option value="Catholics">Catholics</option>
+                                <option value="CHRISTIANS">CHRISTIANS</option>
+                                <option value="ETHIOPIAN_ORTHODOX">ETHIOPIAN_ORTHODOX</option>
+                                <option value="PROTESTANTS">PROTESTANTS</option>
+                                <option value="CATHOLICS">CATHOLICS</option>
+                                <option value="MUSLIMS">MUSLIMS</option>
                             </select>
                             <!-- <input type="text" class="form-control" name="religion"> -->
                         </div>
@@ -240,37 +251,71 @@
                     <div class="mb-2 row">
                         <label class="col-sm-4">Occupation:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="occupation">
+                            <input style="text-transform: Uppercase" type="text" class="form-control" name="occupation">
                         </div>
                     </div>
                     <div class="mb-2 row">
                         <label class="col-sm-4">Place of Birth:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="place_of_birth">
+                            <input style="text-transform: Uppercase" type="text" class="form-control"
+                                name="place_of_birth">
                         </div>
                     </div>
                 </div>
                 <!--second col End-->
+                <!-- <?php
+                            include_once 'connection.php';
+                            $query = "SELECT * FROM region";
+                            $result = $conn ->query($query);
+                ?> -->
                 <!--thirde col -->
                 <div class="col" style="background-color:rgb(248, 245, 245); border:1px solid blue; border-radius:5px;">
                     <div class="mb-2 mt-2 row">
                         <label class="col-sm-4">Region:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="region" required />
+                            <select class="form-select" id="country" name="region">
+                                <option selected disabled>Select Region</option>
+                                <?php while ($row = mysqli_fetch_assoc($county_qry)) : ?>
+                                <option value="<?php echo $row['id']; ?>"> <?php echo $row['names']; ?> </option>
+                                <?php endwhile; ?>
+                            </select>
+                            <!-- <input style="text-transform: Uppercase" type="text" class="form-control" name="region"
+                                required /> -->
+                            <!-- <select style="text-transform: Uppercase" class="form-select" name="religion" aria-label="Default select example"
+                                required id="region">
+                            <option value="">select Region</option>
+                            <?php
+                            if($result->num_rows > 0){
+                                while($row = $result->fetch_assoc()){
+                                    echo '<option value="'.$row['id'].'">'.$row['names'].'</option>';
+                                }
+                            }else{
+                                echo '<option value="">region not available</option>';
+                            }
+                        ?> -->
                             <!--<span class="input-group-text" id="basic-addon2">=</span>-->
                         </div>
                     </div>
+
                     <div class="mb-2 mt-2 row">
                         <label class="col-sm-4">Subcity:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="subcity">
+                            <select class="form-select" id="state" name='subcity'>
+                                <option selected disabled>Select State</option>
+                            </select>
+                            <!-- <input style="text-transform: Uppercase" type="text" class="form-control" name="subcity"> -->
                             <!--<span class="input-group-text" id="basic-addon2">=</span>-->
                         </div>
                     </div>
+
                     <div class="mb-2 row">
                         <label class="col-sm-4">Woreda:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="woreda" required />
+                            <select class="form-select" id="city" name="woreda">
+                                <option selected disabled>Select woreda</option>
+                            </select>
+                            <!-- <input style="text-transform: Uppercase" type="text" class="form-control" name="woreda"
+                                required /> -->
                         </div>
                     </div>
                     <div class="mb-2 mt-2 row">
@@ -394,17 +439,32 @@
     <script src="js/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
+            $('#myTable1').DataTable({
+                scrollY: 200,
+                scrollX: true,
+                "responsive": true,
+                "order": [
+                    [0, 'desc']
+                ],
+                "pageLength": 200,
+            });
+            $(document).on('click', '.close', function () {
+                $('.alert').hide()
+            });
+        });
+    </script>
+    <!-- <script>
+        $(document).ready(function () {
             //inialize datatable
             $('#myTable1').DataTable();
 
             //hide alert
             $(document).on('click', '.close', function () {
                 $('.alert').hide()
-
-            })
+            });
             "bDestroy": true
         });
-    </script>
+    </script> -->
     <script type="text/javascript">
         $(document).ready(function () {
             $("#search").autocomplete({
@@ -429,6 +489,14 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#search3").autocomplete({
+                source: 'search.php',
+                minLength: 0,
+            });
+        });
+    </script>
     <script>
         const inp = document.getElementById("search");
 
@@ -437,11 +505,40 @@
         });
     </script>
 
-    <script>
-        $(document).ready(function () {
-            $('#myTable1').DataTable({
-                scrollY: 200,
-                scrollX: true,
-            });
-        });
-    </script>
+
+
+<script>
+    // County State
+
+    $('#country').on('change', function() {
+        var country_id = this.value;
+        // console.log(country_id);
+        $.ajax({
+            url: 'ajax/state.php',
+            type: "POST",
+            data: {
+                country_data: country_id
+            },
+            success: function(result) {
+                $('#state').html(result);
+                // console.log(result);
+            }
+        })
+    });
+    // state city
+    $('#state').on('change', function() {
+        var state_id = this.value;
+        // console.log(country_id);
+        $.ajax({
+            url: 'ajax/city.php',
+            type: "POST",
+            data: {
+                state_data: state_id
+            },
+            success: function(data) {
+                $('#city').html(data);
+                // console.log(data);
+            }
+        })
+    });
+</script>

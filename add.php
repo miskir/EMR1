@@ -4,6 +4,7 @@
 
 	if(isset($_POST['submit'])){
 		$patientid = $_POST['patientid'];
+		//strtoupper($firstname);
 		$firstname = $_POST['firstname'];
 		$fathersname = $_POST['fathersname'];
         $grandfathersname = $_POST['grandfathersname'];
