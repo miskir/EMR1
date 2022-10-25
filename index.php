@@ -16,9 +16,10 @@ $county_qry = mysqli_query($conn, $country);
     <head>
         <meta charset="utf-8">
         <title>EMR</title>
+        <link rel="stylesheet" type="text/css" href="jquery/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="include/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="datatable/dataTable.bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="jquery/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" href="jquery/jquery.dataTables.min.css"/>
         <!-- <style>
 		
 		.height10{
@@ -42,15 +43,22 @@ $county_qry = mysqli_query($conn, $country);
         margin: 0 auto;
     }
     </stayel> -->
+    <style>
+        .contener{
+            margin-left: ;
+            width:100%
+        }
+        
+        </style>
 
     </head>
 
     <!--menu bare star-->
     <div class="contener-fluid" style="background-color:#d9dbdd">
-        <!-- <div class="row">
+        <div class="row">
         <img src="b.jpg" alt="no">
-    </div> -->
-        <div class="row" style="padding: 5px; background-color: aquamarine;">
+    </div>
+        <div class="row" style="padding: 4px; background-color: white;">
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
                 <div class="container-fluid">
@@ -60,7 +68,7 @@ $county_qry = mysqli_query($conn, $country);
                                 <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="backup.php">Backup</a>
+                                <a class="nav-link" href="#">Backup</a>
                             </li>
                             <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Pricing</a>
@@ -85,7 +93,7 @@ $county_qry = mysqli_query($conn, $country);
 
                 <div>
                     <h6>
-                        <center>Diveloped by: Miskir Nega (HIT)</center>
+                        <center>Diveloped by: Miskir Nega(HIT)</center>
                     </h6>
                 </div>
             </nav>
@@ -93,8 +101,8 @@ $county_qry = mysqli_query($conn, $country);
         </div>
         <div class="row">
 
-            <div class="col-sm-4">
-                <h3>patient Demogerapics</h3>
+            <div class="col-sm-5">
+            <h3 class="page-header text-center text-primary">Patient Demogerapics</h3>
             </div>
             <div class="col-sm-4">
                 <?php
@@ -348,16 +356,16 @@ $county_qry = mysqli_query($conn, $country);
 
         <!--Tabele Start-->
 
-        <div class="container-fluid">
-            <h1 class="page-header text-center">Registrerd Patient List</h1>
+        <div class="contener">
+            <h1 class="page-header text-center text-primary">Registrerd Patient List</h1>
             <div class="row mx-auto">
-                <div class="col-sm-10 col-sm-offset-1">
+                <div class="col-sm-12 col-sm-offset-1">
 
 
-                    <div class="1height10">
-                    </div>
+                    <!-- <div class="1height10">
+                    </div> -->
                     <div class="row">
-                        <table id="myTable1" class="table table-bordered table-striped">
+                        <table id="myTable1" class="table table-bordered table-striped display compact" style="width:100%">
                             <thead>
                                 <th>PatientID</th>
                                 <th>FirstName</th>
@@ -423,16 +431,17 @@ $county_qry = mysqli_query($conn, $country);
         </div>
         <!--Tabele end-->
 
-        <div class="row">
+        <!-- <div class="row">
             <label for="exampleColorInput" class="form-label">Color picker</label>
             <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c"
                 title="Choose your color">
-        </div>
+        </div> -->
 
     </div>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="jquery/jquery.dataTables.min.js"></script>
     <script src="jquery/jquery.min.js"></script>
     <script src="jquery/jquery-3.5.1.js"></script>
-    <script src="jquery/jquery.dataTables.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="datatable/jquery.dataTables.min.js"></script>
     <script src="datatable/dataTable.bootstrap.min.js"></script>
