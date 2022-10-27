@@ -2,7 +2,7 @@
   <div class="row">
     <img src="b.jpg" alt="no">
   </div>
-  <div class="row" style="padding: 5px; background-color: aquamarine;">
+  <div class="row" style="padding: 5px; background-color: antiquewhite;">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
       <div class="container-fluid">
