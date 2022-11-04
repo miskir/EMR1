@@ -54,21 +54,21 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-<<<<<<< HEAD
+
                 <a class="nav-link active" href="#">
-=======
+
                 <a class="nav-link active" href="dashboard.php">
->>>>>>> 890dcbcab7a5ed157ad313059c4c361904f8ff62
+
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-<<<<<<< HEAD
+
                 <a class="nav-link" href="#">
-=======
+
                 <a class="nav-link" href="allpatient.php">
->>>>>>> 890dcbcab7a5ed157ad313059c4c361904f8ff62
+
                   <span data-feather="file"></span>
                   All Patient
                 </a>
