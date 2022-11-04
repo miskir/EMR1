@@ -54,21 +54,13 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-<<<<<<< HEAD
-                <a class="nav-link active" href="#">
-=======
                 <a class="nav-link active" href="dashboard.php">
->>>>>>> 890dcbcab7a5ed157ad313059c4c361904f8ff62
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-<<<<<<< HEAD
-                <a class="nav-link" href="#">
-=======
                 <a class="nav-link" href="allpatient.php">
->>>>>>> 890dcbcab7a5ed157ad313059c4c361904f8ff62
                   <span data-feather="file"></span>
                   All Patient
                 </a>
@@ -135,38 +127,12 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
-    
-          </div>
-          <div class="card text-bg-primary mb-3" style="max-width: 20rem;">
-            <div class="card-header">
-               <h5>All Patient</h5>
-            </div>
-
-
-            <div class="card-body">
-                <h4 class="">
-                    <?php
-                    $conn = mysqli_connect("localhost","root","","emr");
-                        $query = "SELECT * from patient_list";
-                        $query_run = mysqli_query($conn, $query);
-                        if($total = mysqli_num_rows($query_run))
-                        {
-                            echo '<h4 class="mb-0"> '.$total.' </h4>';
-                        }
-                        else{
-                            echo '<h4 class="mb-0"> no data </h4>';
-                     }
-                    ?>
-                </h4>
-            </div>
-            <div class="card-footer"><h5><a href="computer.php"><h5>More...</h5></a></div>
-        </div> 
+          
+          
           <!-- <canvas class="my-4" id="myChart" width="900" height="380"></canvas> -->
 
           <div class="contener">
-            <h1 class="page-header text-center text-primary">Registrerd Patient List</h1>
+            <h1 class="page-header text-center text-primary">All Patient List</h1>
             <div class="row mx-auto">
                 <div class="col-sm-12 col-sm-offset-1">
 
@@ -255,7 +221,7 @@
   <script>
   $(document).ready(function () {
             $('#myTable').DataTable({
-                scrollY: 200,
+                scrollY: 600,
                 scrollX: true,
                 "responsive": true,
                 "order": [

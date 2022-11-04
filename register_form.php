@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 @include 'config.php';
+=======
+@include 'connection.php';
+>>>>>>> 890dcbcab7a5ed157ad313059c4c361904f8ff62
 
 if(isset($_POST['submit'])){
 
