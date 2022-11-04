@@ -1,8 +1,10 @@
-    <?php
+<?php
     session_start();
     include ("head.php");
-    // include ("men.php");
+	if(!isset($_SESSION['user_name'])){
+	header('location:login_form.php');}
     ?>
+
     <?php
 include 'connection.inc.php';
 
@@ -15,8 +17,8 @@ $county_qry = mysqli_query($conn, $country);
 
     <head>
         <meta charset="utf-8">
-        <title>EMR</title>
-		<link rel="icon" type="image/ico" href="1.png">
+        <title><strong> EMR</strong></title>
+        <link rel="icon" href="1.png" type="image/icon type">
         <link rel="stylesheet" type="text/css" href="jquery/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="include/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="datatable/dataTable.bootstrap.min.css">
@@ -91,7 +93,10 @@ $county_qry = mysqli_query($conn, $country);
                         <h2>Electronic Medical Recording System</h2>
                     </div>
                 </div>
-
+                <div class="max-auto col-sm-4">
+						<h4>welcome <span><?php echo $_SESSION['user_name']?></span> <a href="logout.php" class="btn1">logout</a></h4>
+						
+                    </div>
                 <div>
                     <h6>
                         <center>Diveloped by: Miskir Nega(HIT)</center>
@@ -129,6 +134,20 @@ $county_qry = mysqli_query($conn, $country);
                             }
                         ?>
             </div>
+            <div class="col-sm-2">
+            <?php
+                    $conn = mysqli_connect("localhost","root","","emr");
+                        $query = "SELECT * from patient_list";
+                        $query_run = mysqli_query($conn, $query);
+                        if($total = mysqli_num_rows($query_run))
+                        {
+                            echo '<h4 class="mb-0"> '.$total.' </h4>';
+                        }
+                        else{
+                            echo '<h4 class="mb-0"> no data </h4>';
+                     }
+                    ?>
+            </div>
         </div>
         <!--menu bare End-->
 
@@ -139,7 +158,7 @@ $county_qry = mysqli_query($conn, $country);
                 <!--first row-->
 
                 <div class="col"
-                    style="background-color:rgb(248, 245, 245); border:1px solid blue; border-radius:5px; text-align: right;">
+                    style="background-color:rgb(248, 245, 245); border:5px solid #0C090A; border-radius:5px; text-align: right;margin-left: 20px">
                     <div class="mb-2 mt-2 row">
                         <label class="col-sm-4">PatientID:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
@@ -179,7 +198,7 @@ $county_qry = mysqli_query($conn, $country);
                     </div> -->
                     <div class="mb-2 row">
                         <label class="col-sm-4">Gender:<span style="color:red; font-weight: bold;">*</span></label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
                             <select style="text-transform: Uppercase" class="form-select" id="states" name="gender"
                                 aria-label="Default select example" required>
                                 <option selected disabled>select</option>
@@ -190,16 +209,16 @@ $county_qry = mysqli_query($conn, $country);
                         </div>
                     </div>
                     <div class="mb-2 row">
-                        <label class="col-sm-4">MothersName:<span style="color:red; font-weight: bold;">*</span></label>
+                        <label class="col-sm-4">MothersName:</label>
                         <div class="col-sm-8">
                             <input style="text-transform: Uppercase" type="text" class="form-control input-sm"
-                                id="search3" name="mothersname" required />
+                                id="search3" name="mothersname">
                         </div>
                     </div>
                 </div>
                 <!--first col End -->
                 <!--second col Start-->
-                <div class="col" style="background-color:rgb(248, 245, 245); border:1px solid blue; border-radius:5px;">
+                <div class="col" style="background-color:rgb(248, 245, 245); border:5px solid #0C090A; border-radius:5px; text-align: right;margin-left: 5px">
                     <div class="mb-2 mt-2 row">
                         <label class="col-sm-4">Registration Date:<span
                                 style="color:red; font-weight: bold;">*</span></label>
@@ -278,7 +297,7 @@ $county_qry = mysqli_query($conn, $country);
                             $result = $conn ->query($query);
                 ?> -->
                 <!--thirde col -->
-                <div class="col" style="background-color:rgb(248, 245, 245); border:1px solid blue; border-radius:5px;">
+                <div class="col" style="background-color:rgb(248, 245, 245); border:5px solid #0C090A; border-radius:5px; text-align: right; margin-left: 5px">
                     <div class="mb-2 mt-2 row">
                         <label class="col-sm-4">Region:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
@@ -307,7 +326,7 @@ $county_qry = mysqli_query($conn, $country);
                     </div>
 
                     <div class="mb-2 mt-2 row">
-                        <label class="col-sm-4">Subcity:<span style="color:red; font-weight: bold;">*</span></label>
+                        <label class="col-sm-4">Subcity/Zone:<span style="color:red; font-weight: bold;">*</span></label>
                         <div class="col-sm-8">
                             <select class="form-select" id="state" name='subcity'>
                                 <option selected disabled>Select State</option>
@@ -318,7 +337,7 @@ $county_qry = mysqli_query($conn, $country);
                     </div>
 
                     <div class="mb-2 row">
-                        <label class="col-sm-4">Woreda:<span style="color:red; font-weight: bold;">*</span></label>
+                        <label class="col-sm-4">Woreda:</label>
                         <div class="col-sm-8">
                             <select class="form-select" id="city" name="woreda">
                                 <option selected disabled>Select woreda</option>
@@ -328,10 +347,9 @@ $county_qry = mysqli_query($conn, $country);
                         </div>
                     </div>
                     <div class="mb-2 mt-2 row">
-                        <label class="col-sm-4">House Number:<span
-                                style="color:red; font-weight: bold;">*</span></label>
+                        <label class="col-sm-4">House Number:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="house_number" required />
+                            <input type="text" class="form-control" name="house_number">
                         </div>
                     </div>
                     <div class="mb-2 row">
@@ -450,7 +468,7 @@ $county_qry = mysqli_query($conn, $country);
     <script>
         $(document).ready(function () {
             $('#myTable1').DataTable({
-                scrollY: 200,
+                scrollY: 500,
                 scrollX: true,
                 "responsive": true,
                 "order": [
