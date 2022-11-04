@@ -21,28 +21,28 @@
 		$woreda = $_POST['woreda'];
 		$house_number = $_POST['house_number'];
 		$mobile_phone = $_POST['mobile_phone'];
-		$sql = "INSERT INTO patient_list (patientid, firstname, fathersname, grandfathersname, gender, mothersname, registration_date, age, marital_status, religion, occupation, place_of_birth, region, subcity, woreda, house_number, mobile_phone) 
-		VALUES ('$patientid', '$firstname', '$fathersname','$grandfathersname','$gender','$mothersname','$registration_date','$age','$marital_status','$religion','$occupation','$place_of_birth','$region','$subcity', '$woreda','$house_number','$mobile_phone')";
-		// $query = INSERT INTO `patient`(`patientid`, `firstname`, `fathersname`, `grandfathersname`, `gender`, `mothersname`, `registration_date`, `age`, `marital_status`, `religion`, `occupation`, `place_of_birth`, `region`, `woreda`, `house_number`, `mobile_phone`) 
-		// VALUES ('$patientid','$firstname','$fathersname','$grandfathersname','$gender','$mothersname','$registration_date','$age','$marital_status','$religion','$occupation','$place_of_birth','$woreda','$house_number','$mobile_phone',[value-16],[value-17])
-		//use for MySQLi OOP
-		if($conn->query($sql)){
-			$_SESSION['success'] = 'Patient Regesterd successfully';
+		
+		
+		$check = "SELECT * from patient_list where patientid = '$patientid'";
+		$result = mysqli_query($conn,$check);
+		$count = mysqli_num_rows($result);
+		if($count>0){
+			$_SESSION['error'] = 'User already Registrerd';
 		}
-		///////////////
-
-		//use for MySQLi Procedural
-		// if(mysqli_query($conn, $sql)){
-		// 	$_SESSION['success'] = 'Member added successfully';
-		// }
-		//////////////
+		else{
+				$sql = "INSERT INTO patient_list (patientid, firstname, fathersname, grandfathersname, gender, mothersname, registration_date, age, marital_status, religion, occupation, place_of_birth, region, subcity, woreda, house_number, mobile_phone) 
+			VALUES ('$patientid', '$firstname', '$fathersname','$grandfathersname','$gender','$mothersname','$registration_date','$age','$marital_status','$religion','$occupation','$place_of_birth','$region','$subcity', '$woreda','$house_number','$mobile_phone')";
+			if($conn->query($sql)){
+				$_SESSION['success'] = 'Patient Regesterd successfully';
+			}
 		
 		else{
 			$_SESSION['error'] = 'Something went wrong while adding';
+			}
+		// else{
+		// $_SESSION['error'] = 'Fill up add form first';
+		// 	}
 		}
-	}
-	else{
-		$_SESSION['error'] = 'Fill up add form first';
 	}
 
 	header('location: index.php');

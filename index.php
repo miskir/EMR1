@@ -1,7 +1,8 @@
     <?php
     session_start();
     include ("head.php");
-    // include ("men.php");
+	if(!isset($_SESSION['user_name'])){
+	header('location:login_form.php');}
     ?>
     <?php
 include 'connection.inc.php';
@@ -16,11 +17,16 @@ $county_qry = mysqli_query($conn, $country);
     <head>
         <meta charset="utf-8">
         <title>EMR</title>
-		<link rel="icon" type="image/ico" href="1.png">
+        <link rel="icon" type="image/ico" href="1.png">
+        
         <link rel="stylesheet" type="text/css" href="jquery/jquery-ui.css" />
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="include/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="datatable/dataTable.bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="jquery/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="jquery/jquery.dataTables.min.css" />
+        <script src="jquery/jquery-3.5.1.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/style.css">
         <!-- <style>
 		
 		.height10{
@@ -44,12 +50,14 @@ $county_qry = mysqli_query($conn, $country);
         margin: 0 auto;
     }
     </stayel> -->
-    <style>
-        .contener{
-            margin-left: ;
-            width:100%
-        }
-        
+        <style>
+            .contener {
+                margin-left: ;
+                width: 99%
+            }
+            /* .contener-fluid{
+                width:97%; margin:1 auto;
+            } */
         </style>
 
     </head>
@@ -57,8 +65,8 @@ $county_qry = mysqli_query($conn, $country);
     <!--menu bare star-->
     <div class="contener-fluid" style="background-color:#d9dbdd">
         <div class="row">
-        <img src="b.jpg" alt="no">
-    </div>
+            <img src="b.jpg" alt="no">
+        </div>
         <div class="row" style="padding: 4px; background-color: white;">
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
@@ -87,23 +95,28 @@ $county_qry = mysqli_query($conn, $country);
                         </li> -->
                         </ul>
                     </div>
-                    <div class="max-auto col-sm-7">
-                        <h2>Electronic Medical Recording System</h2>
+                    <div class="max-auto col-sm-4">
+                        <h4>Electronic Medical Recording</h4>
                     </div>
+					<div class="max-auto col-sm-4">
+						<h4>welcome <span><?php echo $_SESSION['user_name']?></span> <a href="logout.php" class="btn1">logout</a></h4>
+						
+                    </div>
+					<div class="max-auto col-sm-2">
+						<h6>
+							<center>Div by: Miskir Nega</center>
+						</h6>
+					</div>
                 </div>
 
-                <div>
-                    <h6>
-                        <center>Diveloped by: Miskir Nega(HIT)</center>
-                    </h6>
-                </div>
+                
             </nav>
 
         </div>
         <div class="row">
 
             <div class="col-sm-5">
-            <h3 class="page-header text-center text-primary">Patient Demogerapics</h3>
+                <h3 class="page-header text-center text-primary">Patient Demogerapics</h3>
             </div>
             <div class="col-sm-4">
                 <?php
@@ -366,8 +379,10 @@ $county_qry = mysqli_query($conn, $country);
                     <!-- <div class="1height10">
                     </div> -->
                     <div class="row">
-                        <table id="myTable1" class="table table-bordered table-striped display compact" style="width:100%">
+                        <table id="myTable1" class="table table-bordered table-striped display compact"
+                            style="width:100%">
                             <thead>
+                                <th>link</th>
                                 <th>PatientID</th>
                                 <th>FirstName</th>
                                 <th>FathersName</th>
@@ -401,6 +416,11 @@ $county_qry = mysqli_query($conn, $country);
                                         while($row = $query->fetch_assoc()){
                                             echo 
                                             "<tr>
+                                            <td>
+                                                <a href='#view_".$row['id']."' class='btn btn-info btn-sm' data-toggle='modal'>view</a><br>
+                                                <a href='#edit_".$row['id']."'class='btn btn-info btn-sm' data-toggle='modal' >Edit</a><br>
+                                                <a href='#delete_".$row['id']."'>Delete</a><br>
+									        </td>
                                             <td>".$row['patientid']."</td>
                                             <td>".$row['firstname']."</td>
                                             <td>".$row['fathersname']."</td>
@@ -419,7 +439,7 @@ $county_qry = mysqli_query($conn, $country);
                                             <td>".$row['house_number']."</td>
                                             <td>".$row['mobile_phone']."</td>
                                             </tr>";
-                                            // include('edit_delete_modal.php');
+                                            //  include('edit_delete_modal.php');
                                         }
 
                                     ?>
@@ -430,6 +450,18 @@ $county_qry = mysqli_query($conn, $country);
                 </div>
             </div>
         </div>
+
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                link
+                </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                    </ul>
+            </div>
+        </div><br><br><br><br><br>
         <!--Tabele end-->
 
         <!-- <div class="row">
@@ -440,17 +472,20 @@ $county_qry = mysqli_query($conn, $country);
 
     </div>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <script src="jquery/jquery.dataTables.min.js"></script>
-    <script src="jquery/jquery.min.js"></script>
     <script src="jquery/jquery-3.5.1.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="jquery/jquery.min.js"></script>
+    <!-- <script src="include/js/bootstrap.min.js"></script> -->
     <script src="datatable/jquery.dataTables.min.js"></script>
     <script src="datatable/dataTable.bootstrap.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
             $('#myTable1').DataTable({
-                scrollY: 200,
+                scrollY: 500,
                 scrollX: true,
                 "responsive": true,
                 "order": [
@@ -517,38 +552,38 @@ $county_qry = mysqli_query($conn, $country);
 
 
 
-<script>
-    // County State
+    <script>
+        // County State
 
-    $('#country').on('change', function() {
-        var country_id = this.value;
-        // console.log(country_id);
-        $.ajax({
-            url: 'ajax/state.php',
-            type: "POST",
-            data: {
-                country_data: country_id
-            },
-            success: function(result) {
-                $('#state').html(result);
-                // console.log(result);
-            }
-        })
-    });
-    // state city
-    $('#state').on('change', function() {
-        var state_id = this.value;
-        // console.log(country_id);
-        $.ajax({
-            url: 'ajax/city.php',
-            type: "POST",
-            data: {
-                state_data: state_id
-            },
-            success: function(data) {
-                $('#city').html(data);
-                // console.log(data);
-            }
-        })
-    });
-</script>
+        $('#country').on('change', function () {
+            var country_id = this.value;
+            // console.log(country_id);
+            $.ajax({
+                url: 'ajax/state.php',
+                type: "POST",
+                data: {
+                    country_data: country_id
+                },
+                success: function (result) {
+                    $('#state').html(result);
+                    // console.log(result);
+                }
+            })
+        });
+        // state city
+        $('#state').on('change', function () {
+            var state_id = this.value;
+            // console.log(country_id);
+            $.ajax({
+                url: 'ajax/city.php',
+                type: "POST",
+                data: {
+                    state_data: state_id
+                },
+                success: function (data) {
+                    $('#city').html(data);
+                    // console.log(data);
+                }
+            })
+        });
+    </script>
